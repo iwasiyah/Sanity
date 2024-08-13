@@ -25,7 +25,19 @@ const blogPost: SchemaTypeDefinition = {
       type: 'reference',
       to: [{ type: 'author' }],
     },
-    
+    {
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      options: {
+        hotspot: true, 
+      },
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    },
   ],
 };
 

@@ -1,7 +1,8 @@
-import { type SchemaTypeDefinition } from 'sanity';
-import blogPost from '././schemas/blogPost';
-import author from '././schemas/author';
 
-export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [blogPost, author],
+import blogPost from '././schemas/blogPost';
+import blockContent from '././schemas/blockContent';
+import author from '././schemas/author'; 
+
+export const schema = {
+  types: [blogPost, blockContent, author],
 };

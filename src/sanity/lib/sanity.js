@@ -5,7 +5,7 @@ import imageUrlBuilder from '@sanity/image-url';
 
 const config = {
   projectId: 'obym4sfw', 
-  dataset: 'localblog', 
+  dataset: 'production', 
   apiVersion: '2024-08-08', 
   useCdn: true, 
 };
