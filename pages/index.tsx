@@ -34,14 +34,16 @@ type BlogProps = {
 
 const Blog: FC<BlogProps> = ({ posts }) => {
   const [sortedPosts, setSortedPosts] = useState(posts);
-  const [sortOption, setSortOption] = useState('category'); // Default sorting option
+  const [sortOption, setSortOption] = useState('category'); 
 
   const sortPosts = (option: string) => {
     let sortedArray = [...posts];
     if (option === 'category') {
-      sortedArray.sort((a, b) =>
-        a.categories[0]?.title.localeCompare(b.categories[0]?.title)
-      );
+      sortedArray.sort((a, b) => {
+        const titleA = a.categories?.[0]?.title ?? '';
+        const titleB = b.categories?.[0]?.title ?? '';
+        return titleA.localeCompare(titleB);
+      });
     } else if (option === 'batch') {
       sortedArray.sort((a, b) =>
         a.batch?.name.localeCompare(b.batch?.name)
@@ -55,7 +57,7 @@ const Blog: FC<BlogProps> = ({ posts }) => {
       <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gray-100">
         <h1 className="text-4xl font-bold mb-8">Blogs by Wasia</h1>
 
-        {/* Sorting Options */}
+
         <div className="mb-8">
           <label htmlFor="sort" className="mr-4">Sort by:</label>
           <select
@@ -72,7 +74,6 @@ const Blog: FC<BlogProps> = ({ posts }) => {
           </select>
         </div>
 
-        {/* Blog Posts Grid */}
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {sortedPosts.map((post) => (
             <div key={post._id} className="bg-white p-6 rounded-lg shadow-lg">
