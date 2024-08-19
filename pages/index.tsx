@@ -75,30 +75,34 @@ const Blog: FC<BlogProps> = ({ posts }) => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {sortedPosts.map((post) => (
-            <div key={post._id} className="bg-white p-6 rounded-lg shadow-lg">
-              {post.image && (
-                <img
-                  src={urlFor(post.image).url()}
-                  alt={post.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-              )}
-              <h2 className="text-2xl text-gray-700 font-semibold mb-2">{post.title}</h2>
-              <p className="text-gray-600 mb-4">By {post.author.name}</p>
-              {post.description && (
-                <p className="text-gray-700 mb-4">{post.description}</p>
-              )}
-              {post.categories && (
-                <p className="text-sm text-gray-600 mb-2">Category: {post.categories[0]?.title}</p>
-              )}
-              {post.batch && (
-                <p className="text-sm text-gray-600 mb-2">Batch: {post.batch.name}</p>
-              )}
-              <div className="text-gray-800">{post.body}</div>
-            </div>
-          ))}
+          {sortedPosts.map((post) => {
+            console.log(post._id); // Log the _id of each post
+            return (
+              <div key={post._id} className="bg-white p-6 rounded-lg shadow-lg">
+                {post.image && (
+                  <img
+                    src={urlFor(post.image).url()}
+                    alt={post.title}
+                    className="w-full h-48 object-cover rounded-lg mb-4"
+                  />
+                )}
+                <h2 className="text-2xl text-gray-700 font-semibold mb-2">{post.title}</h2>
+                <p className="text-gray-600 mb-4">By {post.author.name}</p>
+                {post.description && (
+                  <p className="text-gray-700 mb-4">{post.description}</p>
+                )}
+                {post.categories && (
+                  <p className="text-sm text-gray-600 mb-2">Category: {post.categories[0]?.title}</p>
+                )}
+                {post.batch && (
+                  <p className="text-sm text-gray-600 mb-2">Batch: {post.batch.name}</p>
+                )}
+                <div className="text-gray-800">{post.body}</div>
+              </div>
+            );
+          })}
         </div>
+      
       </div>
     </>
   );
